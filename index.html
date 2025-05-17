@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Componentes del Dancing Crab</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            text-align: center;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .section {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        h2 {
+            color: #ff6b6b;
+            border-bottom: 2px solid #ff6b6b;
+            padding-bottom: 10px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .component-icon {
+            font-size: 48px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .sensor { color: #4ecdc4; }
+        .actuator { color: #ff6b6b; }
+        .brain { color: #7d7dff; }
+        .interaction {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .interaction h3 {
+            color: #333;
+            text-align: center;
+        }
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .flow-box {
+            padding: 15px;
+            border-radius: 8px;
+            width: 25%;
+        }
+        .flow-box.sensors {
+            background-color: rgba(78, 205, 196, 0.2);
+            border: 1px solid #4ecdc4;
+        }
+        .flow-box.brain {
+            background-color: rgba(125, 125, 255, 0.2);
+            border: 1px solid #7d7dff;
+        }
+        .flow-box.actuators {
+            background-color: rgba(255, 107, 107, 0.2);
+            border: 1px solid #ff6b6b;
+        }
+        .arrow {
+            font-size: 24px;
+            display: inline-block;
+            width: 5%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Análisis de Componentes del Dancing Crab</h1>
+        <p>Desglose de sensores, actuadores y sistema de control</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <div class="component-icon sensor">🔍</div>
+            <h2>Sensores (Entrada)</h2>
+            <p>Componentes que permiten al robot percibir su entorno:</p>
+            <ul>
+                <li><strong>Sensores de luz/fotorreceptores:</strong> Detectan cambios en la iluminación del ambiente, permitiendo que el robot reaccione a la luz.</li>
+                <li><strong>Sensores de movimiento/proximidad:</strong> Detectan objetos cercanos o movimiento, activando comportamientos de evasión o interacción.</li>
+                <li><strong>Sensores de sonido/micrófonos:</strong> Captan sonidos o voces, permitiendo que el robot reaccione a estímulos auditivos.</li>
+                <li><strong>Sensores de contacto/presión:</strong> Ubicados en las extremidades o superficie, detectan cuando el robot ha sido tocado.</li>
+                <li><strong>Sensores de orientación/inclinación:</strong> Determinan la posición del robot respecto al suelo (giroscopios o acelerómetros simples).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="component-icon actuator">⚙️</div>
+            <h2>Actuadores (Salida)</h2>
+            <p>Componentes que permiten al robot interactuar con su entorno:</p>
+            <ul>
+                <li><strong>Motores DC:</strong> Impulsan el movimiento de las patas o pinzas, generalmente con mecanismos de engranajes para reducir velocidad y aumentar torque.</li>
+                <li><strong>Servomotores:</strong> Permiten movimientos precisos de las extremidades en ángulos específicos.</li>
+                <li><strong>LEDs:</strong> Proporcionan retroalimentación visual, indicando estados o reacciones.</li>
+                <li><strong>Altavoces:</strong> Emiten sonidos, música o efectos sonoros durante el funcionamiento.</li>
+                <li><strong>Mecanismos de vibración:</strong> Crean patrones de movimiento adicionales o simulan comportamientos realistas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="component-icon brain">🧠</div>
+            <h2>Sistema de Control (Cerebro)</h2>
+            <p>Componentes que procesan información y controlan el comportamiento:</p>
+            <ul>
+                <li><strong>Microcontrolador:</strong> El "cerebro" que procesa las señales de los sensores y controla los actuadores (probablemente un chip sencillo como un PIC o similar).</li>
+                <li><strong>Circuitos integrados:</strong> Manejan funciones específicas como amplificación de señales, control de motores o procesamiento de sonido.</li>
+                <li><strong>Memoria:</strong> Almacena los patrones de comportamiento preprogramados.</li>
+                <li><strong>Algoritmos simples:</strong> Programas que determinan cómo debe reaccionar ante diversos estímulos.</li>
+                <li><strong>Placa de circuito impreso (PCB):</strong> Conecta todos los componentes electrónicos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="interaction">
+        <h3>Flujo de Funcionamiento del Sistema</h3>
+        <div class="flow-diagram">
+            <div class="flow-box sensors">
+                <strong>SENSORES</strong><br>
+                Captan estímulos del entorno
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-box brain">
+                <strong>CEREBRO</strong><br>
+                Procesa la información<br>
+                Toma decisiones
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-box actuators">
+                <strong>ACTUADORES</strong><br>
+                Ejecutan respuestas físicas
+            </div>
+        </div>
+        <p>El Dancing Crab funciona mediante un ciclo continuo de percepción-procesamiento-acción:</p>
+        <ol>
+            <li>Los <strong>sensores</strong> detectan cambios en el entorno (luz, sonido, contacto, etc.).</li>
+            <li>El <strong>sistema de control</strong> procesa estas señales según su programación.</li>
+            <li>Se envían señales a los <strong>actuadores</strong> para generar movimientos, luces o sonidos.</li>
+            <li>Este ciclo se repite constantemente, creando un comportamiento que parece "inteligente".</li>
+        </ol>
+    </div>
+
+    <div class="section" style="flex-basis: 100%;">
+        <h2>Programa del Agente</h2>
+        <p>El software que controla al Dancing Crab probablemente sigue estos principios:</p>
+        <ul>
+            <li><strong>Arquitectura reactiva:</strong> Opera principalmente con reglas simples de estímulo-respuesta.</li>
+            <li><strong>Máquina de estados:</strong> El robot puede estar en diferentes "estados" (bailando, dormido, buscando, etc.) y cambia entre ellos según los estímulos recibidos.</li>
+            <li><strong>Patrones de movimiento predefinidos:</strong> Secuencias de activación de motores almacenadas en la memoria.</li>
+            <li><strong>Aleatoriedad limitada:</strong> Pequeñas variaciones en las respuestas para simular comportamiento más natural.</li>
+            <li><strong>Modos de operación:</strong> Posiblemente tiene diferentes modos como "activo", "demostración", "ahorro de energía", etc.</li>
+        </ul>
+        <p>Ejemplo simplificado de pseudocódigo:</p>
+        <pre style="background-color: #f0f0f0; padding: 15px; border-radius: 8px; overflow-x: auto;">
+// Pseudocódigo simplificado del Dancing Crab
+LOOP PRINCIPAL:
+    Leer_Sensores()
+    
+    SI (Sensor_Luz detecta oscuridad)
+        Cambiar_A_Modo_Dormido()
+    SINO
+        SI (Sensor_Sonido detecta ruido fuerte)
+            Iniciar_Baile_Rápido()
+        SINO SI (Sensor_Contacto activado)
+            Mover_Pinzas()
+            Reproducir_Sonido()
+        SINO SI (ha pasado tiempo sin actividad)
+            Iniciar_Movimiento_Aleatorio()
+        FIN SI
+    FIN SI
+    
+    Controlar_Motores()
+    Actualizar_LEDs()
+    Esperar(tiempo_ciclo)
+REPETIR
+        </pre>
+    </div>
+</body>
+</html>
